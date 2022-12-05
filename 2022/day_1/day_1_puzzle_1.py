@@ -27,11 +27,12 @@ maximum_calories_per_elves = np.zeros(len(elves_per_calorie))
 for i in range(len(elves_per_calorie)):
     maximum_calories_per_elves[i] = sum(elves_per_calorie[i])
 
+print("the first answer is",int(max(maximum_calories_per_elves)))
 """
     compute the top 3 of calorie holders
 """
 maximum_calories_per_elves = np.sort(maximum_calories_per_elves)
-print(sum(maximum_calories_per_elves[-3:]))
+print("the second answer is",int(sum(maximum_calories_per_elves[-3:])))
 
 
 
