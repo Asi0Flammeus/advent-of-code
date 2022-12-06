@@ -34,6 +34,12 @@ each line encrypts the stategy to follow for a round
     - get a draw = Y
     - get a win = Z
  
-### SOLVING METHOD
+### SOLVING METHO
+- with `np.loadtxt` parse the input.txt and define the score associated to each round
+- `my_outcome(your_move,my_move)`: compute the score based on the 1st interpretation of the 2nd column
+- `proposed_move(your_move,outcome)`: compute the score based on the 2nd interpretation of the 2nd column
+
+
+
 
 
