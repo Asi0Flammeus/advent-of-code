@@ -2,7 +2,7 @@ import string
 import numpy as np
 
 letters = list(string.ascii_letters)
-inventory = np.loadtxt("./input_day_3.txt", dtype=str)
+inventory = np.loadtxt("./input.txt", dtype=str)
 N_rucksack = len(inventory)
 
 """ First Part of the puzzle
