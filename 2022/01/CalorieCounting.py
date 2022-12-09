@@ -1,4 +1,8 @@
+import psutil
+import time
 import numpy as np
+
+start_time = time.time()
 
 Inventories = []
 Inventory = []
@@ -9,7 +13,6 @@ Inventory = []
 with open('input.txt') as f:
     for line in f:
         if line == "\n":
-            index += 1
             Inventories.append(Inventory)
             Inventory = []
         else:
@@ -28,5 +31,14 @@ print("the first answer is",int(max(TotalCalories)))
 TotalCalories = np.sort(TotalCalories)
 print("the second answer is",int(sum(TotalCalories[-3:])))
 
+# calculate the memory usage
+used = psutil.Process().memory_info().rss / 1024 / 1024
+# print the memory usage, rounded to two decimal places
+print()
+print(f"The script used approximately {round(used * 100) / 100} MB")
 
+# calculate the elapsed time
+elapsed_time = time.time() - start_time
+# print the elapsed time, rounded to two decimal places
+print(f"And it took approximately {round(elapsed_time*1000, 2)} ms to run")
 

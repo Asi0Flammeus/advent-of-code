@@ -1,9 +1,9 @@
+import psutil
+import time
 import numpy as np
 
-data = np.loadtxt('./day_2_input.txt',dtype=str)
-Nbr_round = len(data[:,0])
-print(Nbr_round)
-ScoreOutcome = np.zeros((Nbr_round,2))
+start_time = time.time()
+
 
 def my_outcome(your_move,my_move):
 
@@ -57,12 +57,29 @@ def proposed_move(your_move,outcome):
         elif outcome == "Z": # I win 
             return [6,1]
 
+data = np.loadtxt('./input.txt',dtype=str)
+Nbr_round = len(data[:,0])
+ScoreOutcome_1 = np.zeros((Nbr_round,2))
+ScoreOutcome_2 = np.zeros((Nbr_round,2))
+
 for i in range(Nbr_round):
     ### first plan
-    #ScoreOutcome[i,:] = my_outcome(data[i,0],data[i,1])
+    ScoreOutcome_1[i,:] = my_outcome(data[i,0],data[i,1])
 
     ### Real plan 
-    ScoreOutcome[i,:] = proposed_move(data[i,0],data[i,1])
+    ScoreOutcome_2[i,:] = proposed_move(data[i,0],data[i,1])
 
-print(ScoreOutcome)
-print(sum(sum(ScoreOutcome)))
+print("The 1st answer is",int(sum(sum(ScoreOutcome_1))))
+print("The 2nd answer is",int(sum(sum(ScoreOutcome_2))))
+
+# calculate the memory usage
+used = psutil.Process().memory_info().rss / 1024 / 1024
+# print the memory usage, rounded to two decimal places
+print()
+print(f"The script used approximately {round(used * 100) / 100} MB")
+
+# calculate the elapsed time
+elapsed_time = time.time() - start_time
+# print the elapsed time, rounded to two decimal places
+print(f"And it took approximately {round(elapsed_time*1000, 2)} ms to run")
+

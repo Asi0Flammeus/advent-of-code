@@ -1,5 +1,9 @@
+import psutil
+import time
 import re
 import copy
+
+start_time = time.time()
 
 """ Open the input file in read-only mode
 """
@@ -78,3 +82,17 @@ ANSWER_1 = "".join([element for element in ANSWER_1])
 ANSWER_2 = "".join([element for element in ANSWER_2])
 print("The 1st answer is",ANSWER_1)
 print("The 2st answer is",ANSWER_2)
+
+
+# calculate the memory usage
+used = psutil.Process().memory_info().rss / 1024 / 1024
+# print the memory usage, rounded to two decimal places
+print()
+print(f"The script used approximately {round(used * 100) / 100} MB")
+
+# calculate the elapsed time
+elapsed_time = time.time() - start_time
+# print the elapsed time, rounded to two decimal places
+print(f"And it took approximately {round(elapsed_time*1000, 2)} ms to run")
+
+
