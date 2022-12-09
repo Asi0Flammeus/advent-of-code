@@ -1,4 +1,4 @@
-## -- DAY 6: TUNING TROUBLE --
+## DAY 6 -- TUNING TROUBLE 
 
 We are now our way to the star fruit grove. 
 The elves an encrypted communication system and of course they give me a malfunctionning device. 
