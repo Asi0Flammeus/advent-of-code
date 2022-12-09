@@ -50,4 +50,4 @@ Hence the 2nd quest of the day: what is the total size of such folder?
             - if the first is dir, create a new folder
             - else, create a new file
 - compute the sum of all folders with a size lower than 100000
-
+- compute which minimal folder needs to be deleting in order to free enough space of the disk
