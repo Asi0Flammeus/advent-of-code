@@ -1,2 +1,6 @@
 # Ignore the env folder and all its contents
 env/
+# Ignore the __pycache__ folders and all its contents
+__pycache__/
+# Ignore swap files
+*.swp
