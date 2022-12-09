@@ -1,3 +1,7 @@
+import psutil
+import time
+start_time = time.time()
+
 def get_marker_position(data,length):
     """ parse the data to find the position of the marker
         of a given length
@@ -22,8 +26,19 @@ with open('input.txt', 'r') as file:
 SoP_length = 4
 SoM_length = 14
 
+""" pull out answers and process performance
+"""
 # print the final position of the SoP
 print("The 1st answer is",get_marker_position(data,SoP_length))
 # print the final position of the SoM 
 print("The 2nd answer is",get_marker_position(data,SoM_length))
 
+# calculate the memory usage
+used = psutil.Process().memory_info().rss / 1024 / 1024
+# print the memory usage, rounded to two decimal places
+print(f"The script uses approximately {round(used * 100) / 100} MB")
+
+# calculate the elapsed time
+elapsed_time = time.time() - start_time
+# print the elapsed time, rounded to two decimal places
+print(f"The script took {round(elapsed_time, 2)} seconds to run")
