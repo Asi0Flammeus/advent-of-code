@@ -13,7 +13,27 @@ def visible_from_any_edge(TREE_X, TREE_Y, FOREST_LENGTH, FOREST_WIDTH):
     right  = all(forest[TREE_X, TREE_Y+1:] < forest[TREE_X, TREE_Y])
     return up or down or left or right
 
-def 
+def scenic_score(TREE_X, TREE_Y, FOREST_LENGTH, FOREST_WIDTH):
+    COUNTERS = np.zeros(4) # counter in 4 directions
+
+    for i in reversed(range(TREE_X)): # up direction
+        COUNTERS[0] += 1
+        if forest[i,TREE_Y] >= forest[TREE_X,TREE_Y]:
+            break
+    for i in range(TREE_X+1,FOREST_LENGTH): # down direction
+        COUNTERS[1] += 1
+        if forest[i,TREE_Y] >= forest[TREE_X,TREE_Y]:
+            break
+
+    for j in reversed(range(TREE_Y)): # left direction
+        COUNTERS[2] += 1
+        if forest[TREE_X,j] >= forest[TREE_X,TREE_Y]:
+            break
+    for j in range(TREE_Y+1,FOREST_WIDTH): # right direction
+        COUNTERS[3] += 1
+        if forest[TREE_X,j] >= forest[TREE_X,TREE_Y]:
+            break
+    return np.prod(COUNTERS)
 
 # Open the input.txt file
 with open("input.txt") as f:
@@ -33,18 +53,20 @@ forest = np.loadtxt("processed_input.txt")
 # Define FOREST_WIDTH and FOREST_LENGTH
 FOREST_WIDTH = len(forest[0,:])
 FOREST_LENGTH = len(forest[:,0])
-
 # Compute the number of tree visible
 visible_trees_counter = 0
+scenic_score_matrix = np.zeros((FOREST_LENGTH,FOREST_WIDTH))
+
 for i in range(FOREST_LENGTH):
     for j in range(FOREST_WIDTH):
+        # PART I 
         if visible_from_any_edge(i,j,FOREST_LENGTH,FOREST_WIDTH):
             visible_trees_counter += 1
-
+        # PART II
+        if i != 0 and i != FOREST_LENGTH-1 and j != 0 and j != FOREST_WIDTH-1: # not on the edge
+            scenic_score_matrix[i,j] = scenic_score(i,j,FOREST_LENGTH,FOREST_WIDTH)
 """ pull out answers and script performance
 """
-print("the first answer is",visible_trees_counter)
-print("the second answer is",)
 # calculate the memory usage
 used = psutil.Process().memory_info().rss / 1024 / 1024
 # print the memory usage, rounded to two decimal places
