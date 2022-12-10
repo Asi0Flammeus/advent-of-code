@@ -23,7 +23,8 @@ The input is a 2D grid of numbers between 0 and 9. Each number represents the he
 - define `scenic_score(TREE_X,TREE_Y, FOREST_LENGTH, FOREST_WIDTH)`:
     - for a given tree `(TREE_X,TREE_Y)` count the number of smaller tree from its position toward a edge
         - if a taller tree is encountered then break the loop and compute the scenic score
-        - for up: `reversed(range(0,TREE_X-1))`
-        - for down: `reversed(range(TREE_X+1,FOREST_LENGTH-1))`
-        - for left: `reversed(range(0,TREE_Y-1))`
-        - for down: `reversed(range(TREE_Y+1,FOREST_WIDTH-1))`
+        - for up: `reversed(range(TREE_X-1))`
+        - for down: `range(TREE_X+1,FOREST_LENGTH-1))`
+        - for left: `reversed(range(TREE_Y-1))`
+        - for down: `range(TREE_Y+1,FOREST_WIDTH-1))`
+    - do not include the trees on the edge 

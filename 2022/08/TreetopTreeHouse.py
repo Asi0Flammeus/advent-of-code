@@ -63,7 +63,8 @@ for i in range(FOREST_LENGTH):
         if visible_from_any_edge(i,j,FOREST_LENGTH,FOREST_WIDTH):
             visible_trees_counter += 1
         # PART II
-        if i != 0 and i != FOREST_LENGTH-1 and j != 0 and j != FOREST_WIDTH-1: # not on the edge
+        # do not include the edge
+        if i != 0 and i != FOREST_LENGTH-1 and j != 0 and j != FOREST_WIDTH-1:
             scenic_score_matrix[i,j] = scenic_score(i,j,FOREST_LENGTH,FOREST_WIDTH)
 """ pull out answers and script performance
 """
