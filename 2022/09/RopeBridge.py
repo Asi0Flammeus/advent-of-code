@@ -1,21 +1,24 @@
 import time
 import psutil
-from rope_model import move_tail
+from rope_model import move_tail, move_knots
 
 start_time = time.time()
 
 # define the size of the grid
 N = 1000
 
-# initialize the grid with all sites unvisited
-grid = [[False for j in range(N)] for i in range(N)]
+# initialize the grids with all sites unvisited
+grid_1 = [[False for j in range(N)] for i in range(N)]
+grid_2 = [[False for j in range(N)] for i in range(N)]
 
-# initialize the counter for visited sites
-visited_sites_counter = 0
+# initialize the counters for visited sites
+visited_sites_counter_1 = 0
+visited_sites_counter_2 = 0
 
 # initialize the coordinates of the head and tail
 head = (0, 0)
 tail = (0, 0)
+knots = [(0, 0) for i in range(9)]
 
 # open the input file for reading
 with open("input.txt", "r") as f:
@@ -41,14 +44,20 @@ with open("input.txt", "r") as f:
 
             # move the tail if needed and update the visited sites counter
             tail = move_tail(head, tail)
-            if not grid[tail[0]][tail[1]]:
-                visited_sites_counter += 1
-                grid[tail[0]][tail[1]] = True
+            if not grid_1[tail[0]][tail[1]]:
+                visited_sites_counter_1 += 1
+                grid_1[tail[0]][tail[1]] = True
+
+            # move the knots if needed and update the visited sites counter
+            knots = move_knots(head, knots)
+            if not grid_2[knots[-1][0]][knots[-1][1]]:
+                visited_sites_counter_2 += 1
+                grid_2[knots[-1][0]][knots[-1][1]] = True
 
 """ pull out answers and script performance
 """
-print("the first answer is",visited_sites_counter)
-#"print("the second answer is",candidate_folder_size)
+print("the first answer is", visited_sites_counter_1)
+print("the second answer is", visited_sites_counter_2)
 
 # calculate the memory usage
 used = psutil.Process().memory_info().rss / 1024 / 1024

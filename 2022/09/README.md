@@ -20,7 +20,7 @@ The first puzzle is to compute how many positions the rope's tail visit at least
 - when T does not touch the H, its motion to spring back to H and it would be based on 2 rules: 
     1. if the T is on the same row or column as H, then T moves 1 step towards H
     2. if the T isn't on the same row or column as H, then T moves 1 step towards H but diagonnaly in order to touch be in the moore neighborhood of T
-
+- the second part of the puzzle is with a rope composed of 1 head and 9 knots
 ### SOLVING METHOD 
 
 - consider a 2D grid of a given size
