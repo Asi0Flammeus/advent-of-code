@@ -68,6 +68,9 @@ for i in range(FOREST_LENGTH):
             scenic_score_matrix[i,j] = scenic_score(i,j,FOREST_LENGTH,FOREST_WIDTH)
 """ pull out answers and script performance
 """
+print("the first answer is",visible_trees_counter)
+print("the second answer is",int(np.max(scenic_score_matrix)))
+
 # calculate the memory usage
 used = psutil.Process().memory_info().rss / 1024 / 1024
 # print the memory usage, rounded to two decimal places
