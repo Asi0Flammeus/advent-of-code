@@ -62,6 +62,7 @@ for folder in all_folders:
 """
 print("the first answer is",total_size)
 print("the second answer is",candidate_folder_size)
+
 # calculate the memory usage
 used = psutil.Process().memory_info().rss / 1024 / 1024
 # print the memory usage, rounded to two decimal places
