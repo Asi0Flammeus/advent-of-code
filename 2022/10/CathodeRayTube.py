@@ -13,6 +13,13 @@ cycle_number = 0
 X = 1
 total_signal_strength = 0
 
+SPRITE_HALF_LENGTH = 1
+CRT_WIDTH = 40
+CRT = ['.']*CRT_WIDTH
+CRT_pixel_position = 0
+
+
+
 # open the input txt file
 with open('input.txt', 'r') as f:
     # read the file line by line
@@ -26,10 +33,25 @@ with open('input.txt', 'r') as f:
         elif instruction[0] == 'noop':
             # if the instruction is 'noop', do nothing and add 1 to cycle
             wait_cycles =  1
+
         for i in range(wait_cycles):
             cycle_number += 1
-            if cycle_number % 40 == 20:
+
+            # check if SPRITE is aligned with pixel
+            if X - SPRITE_HALF_LENGTH <= CRT_pixel_position <= X + SPRITE_HALF_LENGTH:
+                CRT[CRT_pixel_position] = "#"
+            CRT_pixel_position += 1
+
+            # if cycle is equal to condition of 1st puzzle
+            if cycle_number % CRT_WIDTH == 20:
                 total_signal_strength += signal_strength(X,cycle_number)
+
+            # if cycle is a multiple of the CRT width
+            if cycle_number % CRT_WIDTH == 0:
+                print(" ".join(CRT))
+                CRT = ['.']*CRT_WIDTH
+                CRT_pixel_position = 0
+        # move the sprite based on the instruction
         if instruction[0] == 'addx':
             X += Z
 
