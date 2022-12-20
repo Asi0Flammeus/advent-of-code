@@ -1,4 +1,5 @@
 import re
+from monkeys import Monkey
 
 # Open the input file
 with open('input.txt', 'r') as f:
@@ -35,7 +36,9 @@ for line in lines:
     elif line.startswith("  Operation"):
         # Extract the operation from the line
         operation = line.split(':')[1][1:]
+        operation = operation.replace("new = ", "")
         # Add the operation to the monkey's dictionary
+        print(operation)
         monkeys[monkey_num]['operation'] = operation
     # Check if the line starts with "Test"
     elif line.startswith("  Test"):
@@ -47,14 +50,22 @@ for line in lines:
     elif line.startswith("    If true"):
         # Extract the true destination from the line
         true_destination = int(line.split()[-1])
-        # Add the true destination to the monkey's dictionary
+     # Add the true destination to the monkey's dictionary
         monkeys[monkey_num]['true_destination'] = true_destination
     # Check if the line starts with "If false"
     elif line.startswith("    If false"):
         # Extract the false destination from the line
         false_destination = int(line.split()[-1])
-        # Add the false destination to the monkey's dictionary
+     # Add the false destination to the monkey's dictionary
         monkeys[monkey_num]['false_destination'] = false_destination
 
-# Print the information for each monkey
-print(monkeys[2])
+# A list to store the created Monkey instances
+monkeys_list = []
+
+# Iterate through the dictionary
+for i, data in monkeys.items():
+    # Create a Monkey instance with the data from the dictionary
+    monkey = Monkey(i, data['starting_items'], data['operation'], data['test_divisibility_num'], data['true_destination'], data['false_destination'])
+    # Add the instance to the list
+    monkeys_list.append(monkey)
+print(monkeys_list)
