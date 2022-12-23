@@ -1,5 +1,5 @@
 import gmpy2
-
+from divisibility_rules import is_divisible
 class Monkey:
     def __init__(self, name, starting_items, operation, test_divisibility_num, true_destination, false_destination):
         self.name = name
@@ -16,7 +16,7 @@ class Monkey:
         return new
 
     def apply_test(self, score):
-        return gmpy2.divmod(score, self.test_divisibility_num)[1] == 0
+        return is_divisible(score, self.test_divisibility_num)
 
     def throw(self, item):
         # monkey inspects

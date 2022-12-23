@@ -81,6 +81,8 @@ for i, data in monkeys.items():
 ROUND_NUM = 20 # 20 for PART I
 
 for i in range(ROUND_NUM):
+    if i%100 == 0:
+        print(i/10)
     for monkey in monkeys_list:
         for item in monkey.items: # monkey holds at least 1 item
             next_monkey, worry_level = monkey.throw(item)
