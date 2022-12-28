@@ -16,6 +16,7 @@ lines = contents.split('\n')
 # Initialize a dictionary to store the information for each monkey
 monkeys = {}
 monkey_num = 0
+p_product = 1
 # Iterate over the lines
 for line in lines:
     # Check if the line starts with "Monkey"
@@ -76,30 +77,30 @@ for i, data in monkeys.items():
     monkey = Monkey(i, data['starting_items'], data['operation'], data['test_divisibility_num'], data['true_destination'], data['false_destination'])
     # Add the instance to the list
     monkeys_list.append(monkey)
+    p_product = p_product * monkey.test_divisibility_num
 
+print(p_product)
 # Simulate the round of the game monkey in the middle
-ROUND_NUM = 20 # 20 for PART I
+ROUND_NUM = 10000 # 20 for PART I
 
 for i in range(ROUND_NUM):
-    if i%100 == 0:
-        print(i/10)
     for monkey in monkeys_list:
         for item in monkey.items: # monkey holds at least 1 item
+            item = item % p_product
             next_monkey, worry_level = monkey.throw(item)
             monkeys_list[next_monkey].items.append(worry_level)
         monkey.items = []
-print(monkeys_list)
+
 # Compute monkey business
 monkey_business = []
 for monkey in monkeys_list:
     monkey_business.append(monkey.inspected_item)
-print(monkey_business)
 monkey_business.sort()
 total_monkey_business = monkey_business[-2]*monkey_business[-1]
 
 """ pull out answers and script performance
 """
-print("the first answer is", total_monkey_business)
+print("the answer is", total_monkey_business)
 #print("the second answer is", visited_sites_counter_2)
 
 # calculate the memory usage
