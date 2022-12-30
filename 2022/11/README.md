@@ -24,6 +24,8 @@ A monkey can be considered as an object class such as:
     - methods:
         - `operation(old)` = return `new` after some specific operation 
         - `divisibility_test(worry_level)` = return to which monkey the item would be thrown based on a specific test on the `worry_level`
+        - `true_destination` = monkey index that receive the item if the outcome of the divisibilitytest is true
+        - `false_destination` = monkey index that receive the item if the outcome of the divisibilitytest is false
 
  ### SOLVING METHOD 
 
@@ -50,8 +52,9 @@ A monkey can be considered as an object class such as:
         - if `monkey.items` is not empty:
             - add 1 to `monkey.inspected_items`
             - apply `operation` on the `worry_level` of the first item 
-            - divide the `worry_level` of that item by 3 
+            - divide the `worry_level` of that item by 3 (only for part I)
             - apply the `test(worry_level)`
+            - do a modulo of the worry level by which is the product of all divisibility_test_num
             - and append this item to the items list of the corresponding monkey of the test outcome
 
 - print for all monkeys theirs number of inspected items 
