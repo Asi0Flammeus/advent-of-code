@@ -13,5 +13,19 @@ Each lowercase letter is associated with a relative height, relative to my initi
 
 ## SOLVING METHOD
 
+My first idea is inspired by this [video](https://www.youtube.com/watch?v=akZ8JJ4gGLs&ab_channel=Numberphile) that I saw couple months ago. 
+Because I need to find the shortest path in a kind of hilly labyrinth, I'll try to implement a breadth-first search algorithm to find it. 
+
+- create 2D array called `hilly_labyrith` and composed of 0's
+- import txt file
+- parse the input text as a 2D string array
+    - if character is lowercase then `hilly_labyrith(i,j)` is set to the relative position of the caracter is the lowercase set
+    - if character is `E` then `hilly_labyrith(i,j)` is set to 26
+    - if character is `S` then `hilly_labyrith(i,j)` is set to -1
+- compute a breadth-first search on `hilly_labyrith` from -1 to 26
+    - a potential trajectory is only considered 
+        - if next step is equal or 1 higher than the current position
+        - else if next step is lower than the current position
+- return the lowest number of steps from -1 to 26 through `hilly_labyrith`
 
 
