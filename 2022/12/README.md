@@ -28,4 +28,7 @@ Because I need to find the shortest path in a kind of hilly labyrinth, I'll try 
         - else if next step is lower than the current position
 - return the lowest number of steps from -1 to 26 through `hilly_labyrith`
 
+## REMARKS
 
+I have a problem with my `build_path` function, I need to dig deeper.
+  
