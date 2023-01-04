@@ -42,7 +42,7 @@ def is_valid(grid, node, prev_node):
   # verify that the node is withing the grid boundaries
   if 0 <= row < len(grid) and 0 <= col < len(grid[0]):
       # verify that the node is accesible (elavation only 1 above or equal or lower)
-      if grid[row, col] == grid[prev_row, prev_col] + 1 or grid[row, col] <= grid[prev_row, prev_col]:
+      if grid[row, col] <= grid[prev_row, prev_col] + 1:
           return True
   return False
 
@@ -53,8 +53,8 @@ def build_path(potential_nodes, grid):
     for node in reversed(potential_nodes):
         prev_node = path[-1]
         if ((prev_node[0] - 1 == node[0] or prev_node[0] + 1 == node[0]) and prev_node[1] == node[1]) or ((prev_node[1] - 1 == node[1] or prev_node[1] + 1 == node[1]) and prev_node[0] == node[0]):
-            if is_valid(grid, node, prev_node):
-               path.append(node)
+            if is_valid(grid,prev_node,node):
+                path.append(node)
     return list(reversed(path))
 
 
