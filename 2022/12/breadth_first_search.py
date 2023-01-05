@@ -57,4 +57,36 @@ def build_path(potential_nodes, grid):
                 path.append(node)
     return list(reversed(path))
 
+def visualize_path(input,path):
+    # Open the input file in read mode
+    with open(input, "r") as in_file:
+      # Read the file into a list of lines
+      lines = in_file.readlines()
 
+    # Convert the list of lines into a 2D list of characters
+    matrix = [list(line.strip()) for line in lines]
+
+    # Modify the elements of the matrix based on their row and column coordinates
+    for i in range(len(matrix)):
+        for j in range(len(matrix[i])):
+            if [i,j] in path:
+                index = path.index([i,j])
+                if index < len(path)-1:
+                    next_node = path[index+1]
+
+                    if i == next_node[0] - 1:
+                        matrix[i][j] = "v"
+                    elif i == next_node[0] + 1:
+                        matrix[i][j] = "^"
+                    elif j == next_node[1] - 1:
+                        matrix[i][j] = ">"
+                    elif j == next_node[1] + 1:
+                        matrix[i][j] = "<"
+            else:
+                matrix[i][j] = "."
+
+    # Open the output file in write mode
+    with open("output.txt", "w") as out_file:
+      # Write the modified matrix to the output file
+      for row in matrix:
+        out_file.write(''.join(row) + '\n')

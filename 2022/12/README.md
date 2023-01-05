@@ -19,16 +19,13 @@ Because I need to find the shortest path in a kind of hilly labyrinth, I'll try 
 - create 2D array called `hilly_labyrith` and composed of 0's
 - import txt file
 - parse the input text as a 2D string array
-    - if character is lowercase then `hilly_labyrith(i,j)` is set to the relative position of the caracter is the lowercase set
+    - if character is lowercase then `hilly_labyrith(i,j)` is set to the relative position of the caracter is the lowercase set + 1
     - if character is `E` then `hilly_labyrith(i,j)` is set to 26
-    - if character is `S` then `hilly_labyrith(i,j)` is set to -1
-- compute a breadth-first search on `hilly_labyrith` from -1 to 26
+    - if character is `S` then `hilly_labyrith(i,j)` is set to 0
+- compute a breadth-first search on `hilly_labyrith` from 0 to 26
     - a potential trajectory is only considered 
         - if next step is equal or 1 higher than the current position
         - else if next step is lower than the current position
-- return the lowest number of steps from -1 to 26 through `hilly_labyrith`
+- return the lowest number of steps from start to end through `hilly_labyrith`
+- the absolutely-not-optimised solution of part II is to apply the breadth-first search on all coordinate at elevation 1
 
-## REMARKS
-
-I have a problem with my `build_path` function, I need to dig deeper.
-  
