@@ -34,10 +34,10 @@ To check weither the pair of packets is in the right order, I have to follow thi
 
 # SOLVING METHOD 
 
-- define `right_order_index` an empty list
-- parse the input txt file
-    - for each groups of 3 lines
-        - assign the first line as the `left_packet`
-        - assing the second line as the `right_packet`
-        - apply the checking procedure 
-        - if the checkin procedure returns `True` than append the index of the line to `right_order_index`
+I want to have a `decode.py` that contains the Code class. 
+A code is an *arbitrarily nested list* that contains intergers and list. 
+Each interger would be track through `code.intergers`, a nested dictionnary for keeping track of the value, depth and position of each interger. 
+
+For the moment I need to complete the `__init__` function with the use of `traverse` function.
+
+Then I need to find a way to compare intergers between two code instances (ie. left and right). 
