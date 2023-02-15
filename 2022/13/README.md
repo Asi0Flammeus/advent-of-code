@@ -38,6 +38,10 @@ I want to have a `decode.py` that contains the Code class.
 A code is an *arbitrarily nested list* that contains intergers and list. 
 Each interger would be track through `code.intergers`, a nested dictionnary for keeping track of the value, depth and position of each interger. 
 
-For the moment I need to complete the `__init__` function with the use of `traverse` function.
-
-Then I need to find a way to compare intergers between two code instances (ie. left and right). 
+- [x] define the `__init__` constructor with the help of a `traverse_code()` function
+- [ ] define a `check_procedure(left,right)` to check if the packets are in the right order
+    - [x] right ran out of items
+    - [x] left ran out of items => default value
+    - [x] both element are equal so pass on next element for both list => let the loop continue
+    - [x] right item is lower than left item
+- [ ] verify that `check_procedure` works with the example input txt
