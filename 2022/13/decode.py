@@ -33,19 +33,19 @@ class Code:
                 self.list_index = i
                 self.traverse_code(element)
 
-a = [[],[1,[3,[0]]],[]]
-b = [[],[[0,[5,3,0,1,0],[3,0,5,7],10,[2,8,5,0]],10,[2,4,[1],[5,6,7],[]],[]]]
+a = [[[]]]
+b = [[]]
 
 left = Code(a)
 right = Code(b)
 
-# print(a)
-# print(left.intergers)
+print(a)
+print(left.intergers)
 # print(left.intergers.get(0,None)["value"])
-# 
-# print()
-# print(b)
-# print(right.intergers)
+
+print()
+print(b)
+print(right.intergers)
 """ next step try to find a way to check value between 2 different codes
 """
 
@@ -59,9 +59,13 @@ def check_procedure(left, right):
             # right packet ran out of items so it's not in the right order
             right_order = False
             break
+        elif right.intergers.get(index,None)["value"] > left.intergers.get(index,None)["value"]:
+            # left item is lower than left one so it's in the right order'
+            break
         elif right.intergers.get(index,None)["value"] < left.intergers.get(index,None)["value"]:
-            # right item is lower than left one so it's in the right order'
+            # right item is lower than left one so it's not in the right order'
+            right_order = False
             break
     return right_order
 
-# print(check_procedure(left, right))
+print(check_procedure(left, right))
