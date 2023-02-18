@@ -33,19 +33,22 @@ class Code:
                 self.list_index = i
                 self.traverse_code(element)
 
-a = [[[]]]
-b = [[]]
-
-left = Code(a)
-right = Code(b)
-
-print(a)
-print(left.intergers)
-# print(left.intergers.get(0,None)["value"])
-
-print()
-print(b)
-print(right.intergers)
+# a = [[[]]]
+# b = [[]]
+# 
+# a = [1,[2,[3,[4,[5,6]]]],9,5,5,9]
+# b = [1,[2,[3,[4,[5,6,0]]]],8,9]
+# 
+# left = Code(a)
+# right = Code(b)
+# 
+# print(a)
+# print(left.intergers)
+# # print(left.intergers.get(0,None)["value"])
+# 
+# print()
+# print(b)
+# print(right.intergers)
 """ next step try to find a way to check value between 2 different codes
 """
 
@@ -60,12 +63,17 @@ def check_procedure(left, right):
             right_order = False
             break
         elif right.intergers.get(index,None)["value"] > left.intergers.get(index,None)["value"]:
-            # left item is lower than left one so it's in the right order'
+            # left item is lower than left one so it's in the right order
             break
         elif right.intergers.get(index,None)["value"] < left.intergers.get(index,None)["value"]:
-            # right item is lower than left one so it's not in the right order'
+            # right item is lower than left one so it's not in the right order
             right_order = False
             break
+        elif right.intergers.get(index,None)["value"] == -1 and left.intergers.get(index,None)["value"] == -1:
+            if right.intergers.get(index,None)["depth"] < left.intergers.get(index,None)["depth"]:
+                # right list  is lower than left one so it's not in the right order
+                right_order = False
     return right_order
 
-print(check_procedure(left, right))
+
+# print(check_procedure(left, right))

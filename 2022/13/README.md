@@ -44,4 +44,5 @@ Each interger would be track through `code.intergers`, a nested dictionnary for 
     - [x] left ran out of items => default value
     - [x] both element are equal so pass on next element for both list => let the loop continue
     - [x] right item is lower than left item
+    - [ ] handle the empty set case for left and right
 - [ ] verify that `check_procedure` works with the example input txt

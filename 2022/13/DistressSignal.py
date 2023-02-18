@@ -22,8 +22,8 @@ for i in range(0, len(lines), 3):
     order.append(check_procedure(left, right))
     if check_procedure(left, right):
         # append the index of the line to right_order_indeix
-        right_order_indices.append(int(i/3))
+        right_order_indices.append(int(i/3)+1)
 
 # print the indices of the right-ordered pairs
-print(right_order_indices)
+print(sum(right_order_indices))
 print(order)
