@@ -37,12 +37,7 @@ To check weither the pair of packets is in the right order, I have to follow thi
 I want to have a `decode.py` that contains the Code class. 
 A code is an *arbitrarily nested list* that contains intergers and list. 
 Each interger would be track through `code.intergers`, a nested dictionnary for keeping track of the value, depth and position of each interger. 
+This representation is not appropriate to compare properly nested list, especially those with empty sets.
+Nonetheless I keep this class, because this datastructure (in tree) could be helpful in the future.
 
-- [x] define the `__init__` constructor with the help of a `traverse_code()` function
-- [ ] define a `check_procedure(left,right)` to check if the packets are in the right order
-    - [x] right ran out of items
-    - [x] left ran out of items => default value
-    - [x] both element are equal so pass on next element for both list => let the loop continue
-    - [x] right item is lower than left item
-    - [ ] handle the empty set case for left and right
-- [ ] verify that `check_procedure` works with the example input txt
+So I starting from scratch, again.
