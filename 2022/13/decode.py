@@ -36,8 +36,8 @@ class Code:
 # a = [[[]]]
 # b = [[]]
 # 
-# a = [1,[2,[3,[4,[5,6]]]],9,5,5,9]
-# b = [1,[2,[3,[4,[5,6,0]]]],8,9]
+# a = [1,[2,[3,[4,[5,6,[]]]]],9,5,5,9]
+# b = [1,[2,[3,[4,[5,6,[[]]]]]],8,9]
 # 
 # left = Code(a)
 # right = Code(b)
@@ -62,6 +62,16 @@ def check_procedure(left, right):
             # right packet ran out of items so it's not in the right order
             right_order = False
             break
+        elif right.intergers.get(index,None)["value"] == -1 and left.intergers.get(index,None)["value"] == -1:
+            if right.intergers.get(index,None)["depth"] < left.intergers.get(index,None)["depth"]:
+                # right list is lower than left one so it's not in the right order
+                right_order = False
+        elif right.intergers.get(index,None)["value"] == -1 and left.intergers.get(index,None)["value"] != -1:
+            # right list ran out of elements so it's not in the right order
+            right_order = False
+        elif right.intergers.get(index,None)["value"] != -1 and left.intergers.get(index,None)["value"] == -1:
+            # left list ran out of elements so it's in the right order
+            break
         elif right.intergers.get(index,None)["value"] > left.intergers.get(index,None)["value"]:
             # left item is lower than left one so it's in the right order
             break
@@ -69,10 +79,6 @@ def check_procedure(left, right):
             # right item is lower than left one so it's not in the right order
             right_order = False
             break
-        elif right.intergers.get(index,None)["value"] == -1 and left.intergers.get(index,None)["value"] == -1:
-            if right.intergers.get(index,None)["depth"] < left.intergers.get(index,None)["depth"]:
-                # right list  is lower than left one so it's not in the right order
-                right_order = False
     return right_order
 
 
