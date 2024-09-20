@@ -33,10 +33,10 @@ They need to know:
   - [x] open the file
     - [ ] make it a function
   - [x] check if empty line or extract calorie value
-  - [ ] allocate dynamically memory for an array of total calorie
+  - [x] allocate dynamically memory for an array of total calorie
     - each element is the sum of food calorie they have in their inventory
-  - [ ] get the max of that array
   - [ ] sort the array
+    - here would be the rabbit hole of sorting-algorithms
   - [ ] sum the top 3
   - [ ] find a way to estimate the RAM used for the script
   - [ ] find a way to estimate the run time of the script

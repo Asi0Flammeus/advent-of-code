@@ -7,6 +7,10 @@ int main() {
   FILE *file;
   char line[256];
   int value;
+  int INVENTORY_SIZE = 1;
+  int INVENTORY_CALORY = 0;
+  int* inventories_p = (int*)malloc(INVENTORY_SIZE * sizeof(int));
+
 
   file = fopen("./input.txt", "r");
   if (file == NULL) {
@@ -29,9 +33,13 @@ int main() {
     }
 
     if (isEmpty) {
-      printf("The line is empty.\n");
+      inventories_p[INVENTORY_SIZE-1] = INVENTORY_CALORY;
+      printf("inventory total calorie: %d\n", inventories_p[INVENTORY_SIZE-1]);
+      INVENTORY_SIZE ++; 
+      inventories_p = realloc(inventories_p, INVENTORY_SIZE * sizeof(int));
+      INVENTORY_CALORY = 0;
     } else if (sscanf(line, "%d", &value) == 1) {
-      printf("This inventory has a food of a calorie: %d\n", value);
+      INVENTORY_CALORY += value;
     } else {
       printf("This line contains something else than an interger\n");
     }
@@ -39,5 +47,6 @@ int main() {
   }
 
   fclose(file);
+  printf("number of elve's inventory: %d\n", INVENTORY_SIZE);
 }
 
